@@ -1,0 +1,140 @@
+Running Flutter Web Locally
+For full Flutter web support (including your complete project):
+
+Enable web support:
+
+bash
+flutter create --platforms web .
+Run the web server:
+
+bash
+flutter run -d chrome
+Build for deployment:
+
+bash
+flutter build web
+This creates a build/web directory with static files you can host anywhere.
+
+
+
+Berikut adalah langkah-langkah lengkap untuk mempush proyek Flutter Anda ke GitHub:
+
+1. Persiapan Awal
+Pastikan Anda sudah:
+
+Memiliki akun GitHub
+
+Terinstal Git di komputer Anda
+
+Proyek Flutter sudah siap (seperti kode yang sudah Anda miliki)
+
+2. Inisialisasi Git di Proyek Anda
+Buka terminal/command prompt di folder proyek Anda:
+
+bash
+cd responsi_mobile
+git init
+3. Buat File .gitignore
+Buat file bernama .gitignore di root folder proyek dengan isi:
+
+# Flutter
+**/android/**/gradle-wrapper.jar
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/key.properties
+**/android/**/GeneratedPluginRegistrant.java
+**/ios/**
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.swp
+.DS_Store
+
+# Build
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+pubspec.lock
+4. Tambahkan File ke Staging Area
+bash
+git add .
+5. Buat Commit Pertama
+bash
+git commit -m "Initial commit - Proyek Responsi Mobile"
+6. Buat Repository di GitHub
+Login ke GitHub
+
+Klik tombol "+" di pojok kanan atas > "New repository"
+
+Isi nama repository (misal: responsi_mobile)
+
+Pilih public/private
+
+JANGAN centang "Initialize this repository with a README"
+
+Klik "Create repository"
+
+7. Hubungkan Proyek Lokal dengan GitHub
+Di terminal, jalankan perintah yang muncul di GitHub (akan berbeda untuk setiap user):
+
+bash
+git remote add origin https://github.com/username-anda/responsi_mobile.git
+git branch -M main
+git push -u origin main
+8. Verifikasi
+Buka repository GitHub Anda di browser, seharusnya semua file proyek sudah muncul.
+
+Tips Tambahan:
+Jika ada error "Support for password authentication was removed":
+
+Gunakan Personal Access Token:
+
+Buat token di GitHub: Settings > Developer Settings > Personal Access Tokens
+
+Pilih scope "repo"
+
+Gunakan token sebagai password saat push
+
+Untuk update perubahan di masa depan:
+
+bash
+git add .
+git commit -m "Pesan commit yang deskriptif"
+git push
+Jika ingin mengupload hanya folder tertentu:
+Buat file .gitignore yang lebih spesifik, contoh:
+
+/build
+/android
+/ios
+Untuk menghindari masalah format line ending (khusus Windows):
+
+bash
+git config --global core.autocrlf true
+Troubleshooting:
+Error: "Updates were rejected because the remote contains work..."
+Solusi:
+
+bash
+git pull origin main --allow-unrelated-histories
+# Resolve conflicts jika ada
+git push
+Error: "Large files detected"
+Solusi:
+
+bash
+git rm --cached nama_file_besar
+git commit -m "Remove large file"
+git push
